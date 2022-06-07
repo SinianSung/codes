@@ -26,6 +26,7 @@ def ahv(code: str) -> int:
 
 def laendercode(land: str)-> str:
     """
+    Teilcodierung für die IBAN, helperfunction
     """
     encoded_value =""
     for letter in land.upper():
@@ -34,13 +35,22 @@ def laendercode(land: str)-> str:
 
 def iban(land: str, bankleitzahl: str, kontonummer: str)-> int:
     """
+    berechnet die Prüfziffer für eine iban-Nummer aus 
+    ländercode:
+    benkleitzahl:
+    kontonummer: 
+    return: checkdigit
     """
     land = laendercode(land)+"00"
     bban = kontonummer + bankleitzahl
     testnummer = int(bban + land)
     return 98-testnummer%97
 
-def luhn(code: str) -> int:
+def check_luhn(code: str) -> int:
+    """
+    Berechnet die Prüfziffer mit dem Luhn-Algorithmus 
+    https://de.wikipedia.org/wiki/Luhn-Algorithmus
+    """
     sum = 0
     parity = len(code) % 2
     for index, digit in enumerate(int(x) for x in code):
@@ -51,7 +61,11 @@ def luhn(code: str) -> int:
         sum += digit
     return sum % 10
 
+
 def postkonto(code: str) -> int:
+    """"
+    Berechnet die Prüfziffer für ein Postkonto CH
+    """
     carry_list = [0,9,4,6,8,2,7,1,3,5]
     fullcode =  code
     carry = 0
