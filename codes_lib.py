@@ -13,6 +13,7 @@ def ean(code: str) -> int:
 
 def isbn(code: str) -> int:
     """
+    struktur: präfix-ländercode-verlagsnummer-titelnummer-pruefziffer
     """
     return ean(code)
 
