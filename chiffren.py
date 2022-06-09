@@ -193,7 +193,7 @@ def rsa_encryption(text: str,n: int, e:int ):
     pass
 
 def main():
-    m = message_blocks("Hallo Universum, wie geht es dir", 3)
+    m = gartenzaun("dashatjabisjetztganzgutgeklappt")
     print(m)
 
 if __name__ == "__main__":
